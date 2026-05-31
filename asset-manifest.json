@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/-Penguin-Circle/static/css/main.35b7af99.css",
-    "main.js": "/-Penguin-Circle/static/js/main.ae0a768c.js",
+    "main.js": "/-Penguin-Circle/static/js/main.45b8b9c0.js",
     "index.html": "/-Penguin-Circle/index.html",
     "main.35b7af99.css.map": "/-Penguin-Circle/static/css/main.35b7af99.css.map",
-    "main.ae0a768c.js.map": "/-Penguin-Circle/static/js/main.ae0a768c.js.map"
+    "main.45b8b9c0.js.map": "/-Penguin-Circle/static/js/main.45b8b9c0.js.map"
   },
   "entrypoints": [
     "static/css/main.35b7af99.css",
-    "static/js/main.ae0a768c.js"
+    "static/js/main.45b8b9c0.js"
   ]
 }
