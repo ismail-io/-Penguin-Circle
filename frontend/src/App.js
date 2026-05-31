@@ -82,45 +82,49 @@ const AppContent = () => {
       {/* ══════════════════════════════════════
           ROOT — smart redirect
           Authenticated  → /dashboard
-          Not auth       → Landing page
+          Not auth       → /login
       ══════════════════════════════════════ */}
       <Route
         path="/"
         element={isAuthenticated
           ? <Navigate to="/dashboard" replace />
-          : <LandingPage initialModal={null} />
+          : <Navigate to="/login" replace />
         }
       />
 
       {/* ══════════════════════════════════════
           DASHBOARD SHELL
-          Works for both authenticated + guest
-          (guest sees sample data)
+          Only accessible to authenticated users;
+          Redirects unauthenticated users to login.
       ══════════════════════════════════════ */}
       <Route path="*" element={
-        <div className="app-layout">
-          <Sidebar
-            isOpen={sidebarOpen}
-            onClose={() => setSidebarOpen(false)}
-            collapsed={sidebarCollapsed}
-            onToggleCollapse={() => setSidebarCollapsed(v => !v)}
-          />
-          <div className={`app-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-            <Navbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
-            <div className="app-content">
-              <Routes>
-                <Route path="/dashboard"   element={<Dashboard />} />
-                <Route path="/events"      element={<Events />} />
-                <Route path="/resources"   element={<Resources />} />
-                <Route path="/community"   element={<Community />} />
-                <Route path="/profile"     element={isAuthenticated ? <Profile /> : <Navigate to="/login" replace />} />
-                <Route path="/admin"       element={<AdminRoute><Admin /></AdminRoute>} />
-                <Route path="/admin-panel" element={<AdminRoute><AdminPanel /></AdminRoute>} />
-                <Route path="*"            element={<Navigate to="/dashboard" replace />} />
-              </Routes>
+        isAuthenticated ? (
+          <div className="app-layout">
+            <Sidebar
+              isOpen={sidebarOpen}
+              onClose={() => setSidebarOpen(false)}
+              collapsed={sidebarCollapsed}
+              onToggleCollapse={() => setSidebarCollapsed(v => !v)}
+            />
+            <div className={`app-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+              <Navbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
+              <div className="app-content">
+                <Routes>
+                  <Route path="/dashboard"   element={<Dashboard />} />
+                  <Route path="/events"      element={<Events />} />
+                  <Route path="/resources"   element={<Resources />} />
+                  <Route path="/community"   element={<Community />} />
+                  <Route path="/profile"     element={<Profile />} />
+                  <Route path="/admin"       element={<AdminRoute><Admin /></AdminRoute>} />
+                  <Route path="/admin-panel" element={<AdminRoute><AdminPanel /></AdminRoute>} />
+                  <Route path="*"            element={<Navigate to="/dashboard" replace />} />
+                </Routes>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <Navigate to="/login" replace />
+        )
       } />
 
     </Routes>
