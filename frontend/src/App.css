@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Colors */
+  --primary-color: #2563EB;     /* Deep Blue */
+  --secondary-color: #F97316;   /* Orange */
+  --accent-color: #60A5FA;      /* Light Blue */
+  --bg-gradient: radial-gradient(circle at 50% 50%, #0e1630 0%, #070b19 100%);
+  --bg-solid: #070b19;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --glass-bg: rgba(13, 25, 48, 0.65);
+  --glass-border: rgba(96, 165, 250, 0.12);
+  --glass-border-orange: rgba(249, 115, 22, 0.25);
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.24);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
+  --shadow-glow-orange: 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-solid);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════
+   APP LAYOUT SHELL (authenticated only)
+   Premium Dark UI Layer
+══════════════════════════════════════ */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Main area shifts right to make room for sidebar */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: 260px;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+}
+
+/* When sidebar is collapsed */
+.app-main.sidebar-collapsed {
+  margin-left: 72px;
+}
+
+/* Content area */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+/* ══════════════════════════════════════
+   MOBILE
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .app-main {
+    margin-left: 0 !important;
+  }
+}
+
+/* ══════════════════════════════════════
+   SCROLLBAR (Premium Dark Neon Style)
+══════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(7, 11, 25, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.2);
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* ══════════════════════════════════════
+   GLOBAL UTILITIES
+══════════════════════════════════════ */
+button {
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
