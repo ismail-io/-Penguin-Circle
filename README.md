@@ -28,25 +28,6 @@ This project utilizes modern software engineering tools and platforms:
 * **Bcrypt.js**: Secures user passwords by hashing them before storage.
 * **Nodemon**: Automatically restarts the Node application during local development on file changes.
 
----
-
-## 🔐 Security, API Keys & `.gitignore`
-
-In modern web development, keeping credentials (like database passwords, Google OAuth client secrets, and JWT private keys) secure is critical. 
-
-* **Environment Variables (`.env`)**: All sensitive API keys, secrets, and connection strings are kept locally in `.env` files (`backend/.env` and `frontend/.env`) and are **never** committed to version control.
-* **How `.gitignore` Protects You**: The `.gitignore` files at the project root, backend, and frontend directories explicitly block `.env` files from being staged or pushed.
-* **Setup Rule**: When cloning the repository, developers must copy the `.env.example` files to `.env` and supply their own API keys, as follows:
-  ```bash
-  # Example backend/.env configuration:
-  MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
-  JWT_SECRET=your_jwt_secret_key
-  GOOGLE_CLIENT_ID=your_google_client_id
-  PORT=5000
-  ```
-
----
-
 ## 📖 How to Use the Platform: A Step-by-Step Example
 
 Here is a typical resident workflow on the platform:
